@@ -1,0 +1,21 @@
+{
+    "name": "laveroadmin/sessions",
+    "title": {"en": "Sessions & Login Audit", "ru": "Сессии и аудит входов"},
+    "description": {"en": "View active admin sessions, revoke sessions remotely, and inspect login history.", "ru": "Просмотр активных сессий администраторов, принудительный выход и история входов."},
+    "category": "security",
+    "icon": "icon-user-shield",
+    "version": "1.0.0",
+    "author": {"name": "Aleksandr Kireev", "email": "hello@bespredel.name", "url": "https://bespredel.name"},
+    "github": "https://github.com/LaveroAdmin/sessions",
+    "setup": {
+        "commands": [
+            {"cmd": "php artisan migrate", "desc": {"en": "Create admin_login_logs table", "ru": "Создание таблицы admin_login_logs"}},
+            {"cmd": "php artisan admin:import sessions", "desc": {"en": "Import Sessions & Audit menu and permissions", "ru": "Импорт меню и прав доступа"}}
+        ],
+        "config": {"file": "config/admin.php", "code": "'sessions' => [\n    'enable' => true,\n],"},
+        "requirements": {"en": ["PHP >= 8.1"], "ru": ["PHP >= 8.1"]},
+        "notes": {"en": ["Automatically logs admin login/logout/failed events. Database session driver enables remote session revocation."], "ru": ["Автоматически фиксирует входы и неудачные попытки. При SESSION_DRIVER=database доступен удалённый сброс сессий."]}
+    },
+    "key": "sessions",
+    "compatibility": {"php": ">=8.1", "laravel": "^10.0 || ^11.0 || ^12.0 || ^13.0", "admin": "^1.0", "extensions": ["pdo"]}
+}
